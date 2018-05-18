@@ -1,0 +1,1 @@
+export const BASEURL = 'https://cnodejs.org/api/v1';

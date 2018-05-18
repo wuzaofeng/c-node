@@ -1,0 +1,45 @@
+{
+  "extends": "stylelint-config-standard",
+  "plugins": [
+    "stylelint-scss",
+    "stylelint-declaration-use-variable"
+  ],
+  "rules": {
+    "at-rule-no-unknown": [
+      true,
+      {
+        "ignoreAtRules": [
+          "extend",
+          "at-root",
+          "debug",
+          "warn",
+          "error",
+          "if",
+          "else",
+          "for",
+          "each",
+          "while",
+          "mixin",
+          "include",
+          "content",
+          "return",
+          "function"
+        ]
+      }
+    ],
+    "sh-waqar/declaration-use-variable": [
+      [
+        "color",
+        "background-color"
+      ]
+    ],
+    "scss/dollar-variable-pattern": "^(([a-z]+)-*)+$",
+    "selector-max-id": 0,
+    "max-nesting-depth": 1,
+    "at-rule-blacklist": [
+      "extend"
+    ],
+    "selector-max-universal": 0,
+    "number-leading-zero": "never"
+  }
+}

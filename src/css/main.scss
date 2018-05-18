@@ -1,0 +1,62 @@
+@import "normalize";
+$white:  #fff;
+$blue: #1890ff;
+
+.page-wrap {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+
+.wrap {
+  max-width: 980px;
+  margin: auto;
+}
+
+.logo {
+  margin: 0;
+  text-align: center;
+  color: $white;
+}
+
+.nav-wrap {
+  margin-top: 10px;
+}
+
+.header-divider {
+  float: left;
+  height: 44px;
+}
+
+.nav {
+  margin-left: 10px;
+  float: left;
+}
+
+.nav.ant-menu-dark .ant-menu-item-selected {
+  background: transparent;
+
+  a {
+    color: $blue;
+  }
+}
+
+.xs-nav {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: auto;
+  color: $white;
+}
+
+.main {
+  .wrap {
+    border: 1px solid #ccc;
+  }
+}
+
+.index-menu {
+  .ant-menu-item-selected {
+    border-right: 3px solid #1890ff;
+  }
+}

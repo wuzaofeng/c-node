@@ -1,0 +1,41 @@
+{
+  "presets": [
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": [
+            "iOS >= 7",
+            "Android >= 4.4"
+          ]
+        },
+        "modules": false,
+        "useBuiltIns": true
+      }
+    ],
+    "react",
+    "stage-1"
+  ],
+  "plugins": [
+    "transform-decorators-legacy",
+      [
+        "react-css-modules-modify",
+        {
+          "filetypes": {
+            ".scss": {
+              "syntax": "postcss-scss"
+            }
+          },
+          "generateScopedName":"[name]__[local]___[hash:base64:5]"
+      }
+    ],
+    ["import", [{ "libraryName": "antd", "style": "css" }]]
+  ],
+  "env": {
+    "test": {
+      "plugins": [
+        "istanbul"
+      ]
+    }
+  }
+}
