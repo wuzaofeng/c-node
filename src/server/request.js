@@ -25,9 +25,31 @@ function ERROR(error) {
   throw error2;
 }
 
-export default function request(url, data, method = 'get', headers = {}) {
+/**
+ * form-data格式化 || 拼接URL
+ * @param {*} data 请求body
+ */
+function formDateTransfrom(data) {
+  // return Object.keys(data).map(e => `${e}=${data[e]}`).join('&');
+  return Object.keys(data).map((e) => {
+    // 多层嵌套
+    if (Array.isArray(data[e])) {
+      return `${e}=${JSON.stringify(data[e])}`;
+    }
+    return `${e}=${data[e]}`;
+  }).join('&');
+}
+
+// 拼接Url
+function joinUrl(url, params = {}) {
+  const params2 = formDateTransfrom(params);
+  return url.indexOf('?') === -1 ? `${url}?${params2}` : `${url}&${params2}`;
+}
+
+export default function request(url, data = null, method = 'get', headers = {}) {
   // const filterData = (typeof data === 'object') ? JSON.stringify(data) : data;
-  return fetch(url, {
+
+  const params = {
     method,
     mode: 'cors',
     // credentials: 'include',
@@ -36,8 +58,20 @@ export default function request(url, data, method = 'get', headers = {}) {
       'Content-Type': 'application/json',
       ...headers,
     },
-    body: data,
-  })
+  };
+
+  let url2 = url;
+  if (method === 'get') {
+    if (data == null) {
+      url2 = url;
+    } else {
+      url2 = joinUrl(url, data);
+    }
+  } else {
+    params.body = JSON.stringify(data);
+  }
+
+  return fetch(url2, params)
     .then(checkStatus)
     .then(parseJSON)
     .then(checkBusinessCode)
