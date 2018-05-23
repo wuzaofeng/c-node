@@ -14,7 +14,9 @@ export default class App extends Component {
       // App root node
       <div className="page-wrap">
         <Head />
-        <Content className="main">{this.props.children}</Content>
+        <Content className="main">
+          <div className="wrap">{this.props.children}</div>
+        </Content>
         <Foot />
       </div>
     );

@@ -1,7 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
+import { message } from 'antd';
 import './config';
+
+message.config({
+  duration: 1,
+});
 
 import App from './wrap';
 

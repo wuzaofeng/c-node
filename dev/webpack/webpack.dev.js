@@ -22,7 +22,7 @@ module.exports = (cfg) => ({
   },
   plugins: [
     new webpack.DefinePlugin({
-      'process.env': { NODE_ENV: JSON.stringify('development') },
+      'process.env': { NODE_ENV: JSON.stringify('production') },
       DEBUG: true,
       THEME:JSON.stringify(cfg.theme),
     }),

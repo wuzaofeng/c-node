@@ -4,6 +4,7 @@ import { withRouter, Route } from 'react-router-dom';
 import * as api from '../../server/api';
 import config from '../../config';
 import Detail from '../detail';
+import * as tools from '../../js/tools';
 
 @withRouter
 export default class Index extends Component {
@@ -76,7 +77,7 @@ export default class Index extends Component {
     });
   }
 
-  componentWillMount() {
+  componentDidMount() {
     this.fetchData(this.state.indexCurrent);
   }
 
@@ -105,7 +106,7 @@ export default class Index extends Component {
               </span>}
             description={item.email}
           />
-          <div>{item.top ? (<span className="top">置顶</span>) : null} {item.last_reply_at}</div>
+          <div>{item.top ? (<span className="top">置顶</span>) : null} {tools.formatPassTime(item.last_reply_at)}</div>
         </List.Item>
       )}
     />);
@@ -115,29 +116,27 @@ export default class Index extends Component {
     const { indexCurrent, isDetail } = this.state;
 
     return (
-      <div className="wrap">
-        <Row>
-          <Col md={6}>
-            <Menu
-              className="index-menu"
-              selectedKeys={[indexCurrent]}
-              onClick={this.handleClick}
-            >
-              <Menu.Item key="all">全部</Menu.Item>
-              <Menu.Item key="good">精华</Menu.Item>
-              <Menu.Item key="share">分享</Menu.Item>
-              <Menu.Item key="ask">问答</Menu.Item>
-              <Menu.Item key="job">招聘</Menu.Item>
-              <Menu.Item key="dev">客户端测试</Menu.Item>
-            </Menu>
-          </Col>
-          <Col md={18}>
-            {
-              isDetail ? (<Route path="/home/:id" component={Detail} />) : this.showList()
-            }
-          </Col>
-        </Row>
-      </div>
+      <Row>
+        <Col md={6}>
+          <Menu
+            className="index-menu"
+            selectedKeys={[indexCurrent]}
+            onClick={this.handleClick}
+          >
+            <Menu.Item key="all">全部</Menu.Item>
+            <Menu.Item key="good">精华</Menu.Item>
+            <Menu.Item key="share">分享</Menu.Item>
+            <Menu.Item key="ask">问答</Menu.Item>
+            <Menu.Item key="job">招聘</Menu.Item>
+            <Menu.Item key="dev">客户端测试</Menu.Item>
+          </Menu>
+        </Col>
+        <Col md={18}>
+          {
+            isDetail ? (<Route path="/home/:id" component={Detail} />) : this.showList()
+          }
+        </Col>
+      </Row>
     );
   }
 }

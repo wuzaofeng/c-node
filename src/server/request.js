@@ -1,4 +1,5 @@
 import 'fetch-ie8';
+import { message } from 'antd';
 
 function checkStatus(response) {
   if (response.status >= 200 && response.status < 300) {
@@ -6,6 +7,9 @@ function checkStatus(response) {
   }
   const error = new Error(response.statusText);
   error.response = response;
+  if (response.status === 401) {
+    message.error('错误的accessToken');
+  }
   throw error;
 }
 
