@@ -13,3 +13,31 @@
 ## 实战发现问题
     本项目首页原想用分页显示，但因为用的是cNode网站接口，没有返回总条数。无法确定总条数是多少。
     于是运用了点击更多加载分页。
+
+## Cnode接口 
+### 感谢来自[cnodejs论坛]( https://cnodejs.org/api )官方提供的api！
+
+### 主题
+- [X] get /topics 主题首页 [示例](https://cnodejs.org/api/v1/topics)
+- [X] get /topic/:id 主题详情 [示例](https://cnodejs.org/api/v1/topic/5433d5e4e737cbe96dcef312)
+- [ ] post /topics 新建主题
+- [ ] post /topics/update 编辑主题
+
+### 主题收藏
+- [ ] post /topic_collect/collect 收藏主题
+- [ ] post /topic_collect/de_collect 取消主题
+- [X] get /topic_collect/:loginname 用户所收藏的主题 [示例](https://cnodejs.org/api/v1/topic_collect/alsotang)
+
+### 评论
+- [ ] post /topic/:topic_id/replies 新建评论
+- [ ] post /reply/:reply_id/ups 为评论点赞
+
+### 用户
+- [X] get /user/:loginname 用户详情 [示例](https://cnodejs.org/api/v1/user/alsotang)
+- [X] post /accesstoken 验证 accessToken 的正确性
+
+### 消息通知
+- [ ] get /message/count 获取未读消息数
+- [ ] get /messages 获取已读和未读消息
+- [ ] post /message/mark_all 标记全部已读
+- [ ] post /message/mark_one/:msg_id 标记单个消息为已读

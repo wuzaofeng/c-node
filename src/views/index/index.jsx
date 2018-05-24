@@ -77,6 +77,18 @@ export default class Index extends Component {
     });
   }
 
+  componentWillMount() {
+    const path = this.props.history.location.pathname.split('/');
+    if (path.length > 2) {
+      const id = path[2];
+      this.setState({
+        isDetail: true,
+      }, () => {
+        this.props.history.push(`/home/${id}`);
+      });
+    }
+  }
+
   componentDidMount() {
     this.fetchData(this.state.indexCurrent);
   }
