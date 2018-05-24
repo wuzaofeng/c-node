@@ -52,26 +52,25 @@ export function getUserDetails(loginname) { // 用户详情
 export function postAccessToken(accesstoken) { // 登陆 验证 accessToken 的正确性
   return request(`${config.BASEURL}/accesstoken`, { accesstoken }, 'post');
 }
+
+// 消息通知
+export function getMessageCount(data) { // 获取未读消息数
+  return request(`${config.BASEURL}/message/count`, { accesstoken: data.token });
+}
 //
-// // 消息通知
-// export function getMessageCount(data) { // 获取未读消息数
-//   // accesstoken
-//   return request(`${config.BASEURL}/message/count`, data);
-// }
+export function getMessage(data) { // 获取已读和未读消息
+  // accesstoken
+  // mdrender (可选)
+  return request(`${config.BASEURL}/messages`, { accesstoken: data.token });
+}
 //
-// export function getMessage(data) { // 获取已读和未读消息
-//   // accesstoken
-//   // mdrender (可选)
-//   return request(`${config.BASEURL}/messages `, data);
-// }
-//
-// export function postMessageMarkAll(data) { // 标记全部已读
-//   // accesstoken
-//   return request(`${config.BASEURL}/message/mark_all`, data, 'post');
-// }
-//
-// export function postMessageMarkAll(data) { // 标记全部已读
-//   // accesstoken
-//   // msg_id
-//   return request(`${config.BASEURL}/message/mark_one/${data.msg_id}`,{ data }, 'post');
-// }
+export function postMessageMarkAll(data) { // 标记全部已读
+  // accesstoken
+  return request(`${config.BASEURL}/message/mark_all`, data, 'post');
+}
+
+export function postMessageMarkOne(data) { // 标记单个消息为已读
+  // accesstoken
+  // msg_id
+  return request(`${config.BASEURL}/message/mark_one/${data.msg_id}`,{ accesstoken: data.accesstoken }, 'post');
+}

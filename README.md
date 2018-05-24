@@ -6,7 +6,7 @@
     react + Antd + react-router + ES6/7/8
 
 ## 说明
-    本项目是为了更加了解react全家桶
+    本项目是为了更加了解react全家桶，样式方面可能没有那么在乎，含请见谅
     如果觉得不错的话，您可以点右上角 "Star" 支持一下 谢谢！ ^_^
     如有问题请直接在 Issues 中提，或者您发现问题并有非常好的解决方案，欢迎 PR 👍
 
@@ -37,7 +37,11 @@
 - [X] post /accesstoken 验证 accessToken 的正确性
 
 ### 消息通知
-- [ ] get /message/count 获取未读消息数
-- [ ] get /messages 获取已读和未读消息
-- [ ] post /message/mark_all 标记全部已读
-- [ ] post /message/mark_one/:msg_id 标记单个消息为已读
+- [X] get /message/count 获取未读消息数
+- [X] get /messages 获取已读和未读消息
+- [X] post /message/mark_all 标记全部已读
+- [X] post /message/mark_one/:msg_id 标记单个消息为已读
+
+### 问题
+可能由于cnode论坛上没有消息。所以无法测试有没有信息。
+所以无法测试标记单个信息为已读和标记全部已读显示问题。但接口是没问题的。能正常请求。
