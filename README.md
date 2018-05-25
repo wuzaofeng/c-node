@@ -30,7 +30,7 @@
 
 ### 评论
 - [ ] post /topic/:topic_id/replies 新建评论
-- [ ] post /reply/:reply_id/ups 为评论点赞
+- [X] post /reply/:reply_id/ups 为评论点赞
 
 ### 用户
 - [X] get /user/:loginname 用户详情 [示例](https://cnodejs.org/api/v1/user/alsotang)

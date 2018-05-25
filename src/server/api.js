@@ -6,8 +6,8 @@ export function getTopics(data) { // 主题首页
   return request(`${config.BASEURL}/topics`, data);
 }
 
-export function getTopicsDetail(id) { // 主题详情
-  return request(`${config.BASEURL}/topic/${id}`);
+export function getTopicsDetail(id, token = '') { // 主题详情
+  return request(`${config.BASEURL}/topic/${id}`, { accesstoken: token });
 }
 
 export function postTopics(data) { // 新建主题
@@ -39,10 +39,10 @@ export function postToggCollext(accesstoken, topic_id, bool = false) { // 收藏
 //   return request(`${config.BASEURL}/topic/${ reply_id }/replies`, data, 'post');
 // }
 //
-// export function getReplies(data) { // 为评论点赞
-//   // accesstoken, reply_id
-//   return request(`${config.BASEURL}/reply/${reply_id}/ups`, { accesstoken }, 'post')
-// }
+export function getReplies(data) { // 为评论点赞
+  // accesstoken, reply_id
+  return request(`${config.BASEURL}/reply/${data.reply_id}/ups`, { accesstoken: data.token }, 'post')
+}
 
 // 用户
 export function getUserDetails(loginname) { // 用户详情

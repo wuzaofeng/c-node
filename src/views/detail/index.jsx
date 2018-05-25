@@ -32,7 +32,13 @@ class detail extends Component {
   }
 
   getTopicsDetail = () => {
-    api.getTopicsDetail(this.props.match.params.id).then(res => {
+    const params = {
+      id: this.props.match.params.id,
+    }
+    if (this.props.login) {
+      params.token = this.props.token;
+    }
+    api.getTopicsDetail(params.id, params.token).then(res => {
       this.setState({
         data: res.data,
         loading: false,
@@ -81,6 +87,29 @@ class detail extends Component {
     }
   }
 
+  toggReplieUp = (id) => {
+    if (!this.props.login) {
+      const _this = this;
+      confirm({
+        title: '需要登录',
+        content: '需要登录',
+        okText: '确认',
+        cancelText: '取消',
+        onOk() {
+          _this.props.history.push('/login');
+        },
+        onCancel() {},
+      });
+    } else {
+      api.getReplies({
+        token: this.props.token,
+        reply_id: id,
+      }).then(res => {
+        this.getTopicsDetail();
+      });
+    }
+  }
+
   render() {
     const { loading, data, isCollect } = this.state;
     const {
@@ -89,7 +118,14 @@ class detail extends Component {
       title,
     } = data;
 
-    const IconText = ({ type, text }) => (<span><Icon type={type} style={{ marginRight: 8 }} />{text}</span>);
+    const IconText = ({ type, text, onClick }) => (
+      <span onClick={onClick}>
+        <Icon
+          type={type}
+          style={{ marginRight: 8 }}
+        />
+        {text}
+      </span>);
 
     return (
       <div styleName="content">
@@ -115,7 +151,11 @@ class detail extends Component {
                   <List.Item
                     key={item.title}
                     actions={[
-                      <IconText type="like-o" text={item.ups.length} />,
+                      <IconText
+                        type={item.is_uped ? 'like' : 'like-o'}
+                        text={item.ups.length}
+                        onClick={() =>{this.toggReplieUp(item.id)}}
+                      />,
                       <IconText type="message" />]}
                   >
                     <List.Item.Meta

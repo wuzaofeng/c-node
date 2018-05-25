@@ -141,7 +141,7 @@ class User extends Component {
             </Collapse>
           </Col>
           <Col xs={24} md={12}>
-            <Button onClick={this.postMessageMarkAll }>全部已读</Button>
+            { this.state.hasnot_read_messages.length > 0 && (<Button onClick={this.postMessageMarkAll }>全部已读</Button>) }
             <Tabs defaultActiveKey={this.state.currentReadIndex}>
               {
                 readyArray.map((item, i) => (
@@ -154,7 +154,7 @@ class User extends Component {
                           <List.Item.Meta
                             avatar={<Avatar src={list.author.avatar_url} />}
                             title={
-                              <Link to={`/home/${list.id}`} href={`/home/${list.id}`}>
+                              <Link to={`/home/${list.topic.id}`} href={`/home/${list.topic.id}`}>
                                 {list.author.loginname}
                               </Link>}
                             description={list.topic.title}
