@@ -20,11 +20,11 @@ export default class Nav extends Component {
         <Menu.Item key="home">
           <Link to="/home"><Icon type="home" />首页</Link>
         </Menu.Item>
-        <Menu.Item key="book">
-          <Link to="/book"><Icon type="book" />教程</Link>
+        <Menu.Item key="add">
+          <Link to="/add"><Icon type="file-add" />添加主题</Link>
         </Menu.Item>
-        <Menu.Item key="about">
-          <Link to="/about"><Icon type="info-circle" />关于</Link>
+        <Menu.Item key="api">
+          <a target="_blank" rel="noopener noreferrer" href="https://cnodejs.org/api"><Icon type="link" />cNode Api</a>
         </Menu.Item>
       </Menu>
     );

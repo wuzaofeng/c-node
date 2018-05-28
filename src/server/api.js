@@ -17,7 +17,7 @@ export function postTopics(data) { // 新建主题
 
 export function postTopicsUpdate (data) { // 编辑主题
   // accesstoken, topic_id ,title, tab, content
-  return request(`${config.BASEURL}/topics`, data, 'post');
+  return request(`${config.BASEURL}/topics/update`, data, 'post');
 }
 
 // 主题收藏
@@ -34,11 +34,19 @@ export function postToggCollext(accesstoken, topic_id, bool = false) { // 收藏
 }
 
 // 评论
-// export function getReplies(data) { // 新建评论
-//   // accesstoken, content, reply_id
-//   return request(`${config.BASEURL}/topic/${ reply_id }/replies`, data, 'post');
-// }
-//
+export function getNewReplies(data) { // 新建评论
+  // accesstoken, content, reply_id
+  const { topic_id, content, token, reply_id } = data;
+  const params = {
+    content,
+    accesstoken: token,
+  }
+  if (reply_id) {
+    params.reply_id = reply_id;
+  }
+  return request(`${config.BASEURL}/topic/${ topic_id }/replies`, params, 'post');
+}
+
 export function getReplies(data) { // 为评论点赞
   // accesstoken, reply_id
   return request(`${config.BASEURL}/reply/${data.reply_id}/ups`, { accesstoken: data.token }, 'post')

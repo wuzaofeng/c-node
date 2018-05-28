@@ -5,6 +5,7 @@ import * as api from '../../server/api';
 import config from '../../config';
 import Detail from '../detail';
 import * as tools from '../../js/tools';
+import './index.scss';
 
 @withRouter
 export default class Index extends Component {
@@ -22,6 +23,10 @@ export default class Index extends Component {
   };
 
   handleClick = (e) => {
+    const path = this.props.history.location.pathname.split('/');
+    if (path.length > 2) {
+      this.props.history.push('/home');
+    }
     this.setState({
       indexCurrent: e.key,
       currentIndex: 1,
@@ -143,7 +148,7 @@ export default class Index extends Component {
             <Menu.Item key="dev">客户端测试</Menu.Item>
           </Menu>
         </Col>
-        <Col md={18}>
+        <Col md={18} styleName="list">
           {
             isDetail ? (<Route path="/home/:id" component={Detail} />) : this.showList()
           }

@@ -88,11 +88,11 @@ class User extends Component {
       title: '用户所收藏的主题',
       data: this.state.collectData,
     }, {
-      title: '最近创建的话题',
-      data: recent_replies,
-    }, {
-      title: '最近参与的话题',
+      title: '最近创建的主题',
       data: recent_topics,
+    }, {
+      title: '最近参与的主题',
+      data: recent_replies,
     }]
 
     const readyArray = [{
@@ -150,7 +150,8 @@ class User extends Component {
                       itemLayout="horizontal"
                       dataSource={item.data}
                       renderItem={list => (
-                        <List.Item>
+                        <List.Item
+                        >
                           <List.Item.Meta
                             avatar={<Avatar src={list.author.avatar_url} />}
                             title={

@@ -19,3 +19,8 @@ export function formatPassTime(time) {
   if (min) return min + "分钟前"
   else return '刚刚'
 }
+
+export function escape2Html(str) {
+  const arrEntities={'lt':'<','gt':'>','nbsp':' ','amp':'&','quot':'"'};
+  return str.replace(/&(lt|gt|nbsp|amp|quot);/ig,function(all,t){return arrEntities[t];});
+}

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { Layout, Row, Col, Divider, Icon, Dropdown, Button, Avatar } from 'antd';
 import { connect } from 'react-redux';
-import { loginOut } from "../../model/action/user";
+import { loginOut } from '../../model/action/user';
 import Nav from '../nav';
 import './header.scss';
 
@@ -13,6 +13,9 @@ class HeaderWrap extends Component {
     current: 'home',
   };
   itemClick = (key) => {
+    if (key === 'api') {
+      return;
+    }
     this.setState({ current: key });
   }
   render() {

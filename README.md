@@ -20,16 +20,16 @@
 ### 主题
 - [X] get /topics 主题首页 [示例](https://cnodejs.org/api/v1/topics)
 - [X] get /topic/:id 主题详情 [示例](https://cnodejs.org/api/v1/topic/5433d5e4e737cbe96dcef312)
-- [ ] post /topics 新建主题
-- [ ] post /topics/update 编辑主题
+- [X] post /topics 新建主题
+- [X] post /topics/update 编辑主题
 
 ### 主题收藏
-- [ ] post /topic_collect/collect 收藏主题
-- [ ] post /topic_collect/de_collect 取消主题
+- [X] post /topic_collect/collect 收藏主题
+- [X] post /topic_collect/de_collect 取消主题
 - [X] get /topic_collect/:loginname 用户所收藏的主题 [示例](https://cnodejs.org/api/v1/topic_collect/alsotang)
 
 ### 评论
-- [ ] post /topic/:topic_id/replies 新建评论
+- [X] post /topic/:topic_id/replies 新建评论
 - [X] post /reply/:reply_id/ups 为评论点赞
 
 ### 用户
@@ -44,4 +44,6 @@
 
 ### 问题
 可能由于cnode论坛上没有消息。所以无法测试有没有信息。
-所以无法测试标记单个信息为已读和标记全部已读显示问题。但接口是没问题的。能正常请求。
+所以无法测试标记单个信息为已读和标记全部已读显示问题。但接口是没问题的。能正常请求。(解决)
+优化,其实可以将详情页显示的数据保存在state中，这样可以减少请求数。
+使用defaultValue 需要传入参数时候要判断是否为空。不然会渲染两次。 
